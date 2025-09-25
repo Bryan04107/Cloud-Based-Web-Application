@@ -3,6 +3,13 @@
 A web application that creates HTML + JS to deploy on MOODLE LMS for the CSE3CWA/CSE5006 course.
 This will is the first part of a larger project.
 
+## Current Features Implemented
+
+1. About Page.
+2. Functional navigation bar.
+3. Functional header and footer.
+4. Linked placeholder pages
+
 ## How to Run Locally
 
 1.  Clone the repository.
