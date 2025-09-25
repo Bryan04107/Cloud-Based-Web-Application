@@ -14,10 +14,9 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-gray-800 text-white p-4">
+    <header className="sticky top-0 z-50 bg-white text-zinc-800 p-4 shadow-md">
       <div className="flex justify-between items-center mb-2">
-        <div></div>
-        <div className="text-2xl font-bold">Title</div>
+        <div className="text-2xl font-bold">LTU Moodle Builder</div>
         <div className="text-lg font-semibold">22586532</div>
       </div>
 
@@ -29,22 +28,27 @@ export default function Header() {
                 href={link.href}
                 className={`
                   p-1 rounded-md outline outline-1 transition-colors duration-200
-                  ${pathname === link.href ? "outline-white bg-gray-700" : "outline-transparent hover:text-gray-400"}
+                  ${pathname === link.href ? "outline-zinc-800 bg-zinc-200" : "outline-transparent hover:bg-zinc-100"}
                 `}
               >
                 {link.name}
               </Link>
-              {index < navLinks.length - 1 && <span className="text-white ml-4">|</span>}
+              {index < navLinks.length - 1 && <span className="text-zinc-800 ml-4">|</span>}
             </div>
           ))}
         </nav>
         <div className="flex items-center space-x-4">
-          <Link href="/about" className="hover:text-gray-400">About</Link>
+          <Link
+            href="/about"
+            className={`hover:text-zinc-400 ${pathname === '/about' ? 'outline outline-1 outline-zinc-800 bg-zinc-200 p-1 rounded-md' : ''}`}
+          >
+            About
+          </Link>
           <div className="cursor-pointer">
             <div className="space-y-1">
-              <div className="w-6 h-1 bg-white"></div>
-              <div className="w-6 h-1 bg-white"></div>
-              <div className="w-6 h-1 bg-white"></div>
+              <div className="w-6 h-1 bg-zinc-800"></div>
+              <div className="w-6 h-1 bg-zinc-800"></div>
+              <div className="w-6 h-1 bg-zinc-800"></div>
             </div>
           </div>
         </div>
