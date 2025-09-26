@@ -1,5 +1,21 @@
-import { redirect } from 'next/navigation';
+"use client";
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 
 export default function RootPage() {
-  redirect('/about');
+  const router = useRouter();
+
+  useEffect(() => {
+    const lastPage = localStorage.getItem('lastPage');
+
+    if (lastPage && lastPage !== '/') {
+      router.push(lastPage);
+    } else {
+      router.push('/about');
+    }
+  }, [router]);
+
+  return <div>Loading...</div>;
 }
