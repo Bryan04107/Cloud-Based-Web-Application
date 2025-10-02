@@ -9,12 +9,15 @@ This will is the first part of a larger project.
 2. Functional navigation bar.
 3. Functional header and footer.
 4. Linked placeholder pages
-5. Cookies for tabs and user themes.
+5. Cookies for navigated tabs, user themes and tabs header/content.
 6. Functional hamburger menu.
 7. Five themes implemented to choose from (detects user system theme).
+9. Up to 15 Tabs Header each with modifiable name.
+9. Customizable inputs for Tabs Content.
+10. Tabs Page with functional HTML output.
 
 ## How to Run Locally
 
-1.  Clone the repository.
-2.  Install dependencies with `npm install`.
-3.  Run the development server with `npm run dev`.
+1. Clone the repository.
+2. Install dependencies with `npm install`.
+3. Run the development server with `npm run dev`.

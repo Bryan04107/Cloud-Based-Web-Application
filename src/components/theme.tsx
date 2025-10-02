@@ -34,8 +34,7 @@ export default function ThemeSelector() {
     
     const handleSystemChange = (e: MediaQueryListEvent) => {
       setSystemThemePreference(e.matches ? 'Dark' : 'Light');
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'system') {
+      if (localStorage.getItem('theme') === 'system') {
         document.documentElement.className = e.matches ? 'dark' : 'light';
       }
     };
@@ -62,21 +61,31 @@ export default function ThemeSelector() {
     };
     document.addEventListener('mousedown', handleClickOutside);
     
+    const handleScroll = () => {
+      if (showMenu) {
+        setAnimateOut(true);
+        setTimeout(() => setShowMenu(false), 200);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
       mediaQuery.removeEventListener('change', handleSystemChange);
     };
   }, [showMenu]);
-
 
   const changeTheme = (themeName: string) => {
     let finalClass = themeName;
     
     if (themeName === 'system') {
       finalClass = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      localStorage.setItem('theme', themeName);
+    } else {
+      localStorage.setItem('theme', themeName);
     }
     
-    localStorage.setItem('theme', themeName);
     document.documentElement.className = finalClass;
     setSelectedTheme(themeName);
     setAnimateOut(true);

@@ -3,21 +3,21 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 export default function RootLayout({
-  children,
+ children,
 }: {
-  children: React.ReactNode;
+ children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className="flex flex-col min-h-screen bg-background text-primary">
-        <Header />
+ return (
+  <html lang="en">
+   <body className="flex flex-col min-h-screen bg-background text-primary">
+    <Header />
 
-        <main className='flex-grow'>
-            {children}
-        </main>
+    <main className='flex flex-grow'>
+      {children}
+    </main>
 
-        <Footer />
-      </body>
-    </html>
-  );
+    <Footer />
+   </body>
+  </html>
+ );
 }

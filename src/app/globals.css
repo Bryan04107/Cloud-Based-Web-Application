@@ -9,6 +9,8 @@ body {
 @theme {
   --color-background: var(--background);
   --color-footer: var(--footer);
+  --color-shade: var(--shade);
+  --color-contrast: var(--contrast);
   --color-button: var(--button);
   --color-hover: var(--hover);
   --color-primary: var(--primary);
@@ -17,6 +19,8 @@ body {
 :root {
   --background: #fff;
   --footer: #e4e4e7;
+  --shade: #c2c2c2;
+  --contrast: #00c950;
   --button: #e4e4e7;
   --hover: #f4f4f5;
   --primary: #27272a;
@@ -25,6 +29,8 @@ body {
 .light {
   --background: #fff;
   --footer: #e4e4e7;
+  --shade: #c2c2c2;
+  --contrast: #00c950;
   --button: #e4e4e7;
   --hover: #f4f4f5;
   --primary: #27272a;
@@ -33,6 +39,8 @@ body {
 .dark {
   --background: #000;
   --footer: #27272a;
+  --shade: #49494f;
+  --contrast: #ffffff;
   --button: #27272a;
   --hover: #18181b;
   --primary: #d4d4d8;
@@ -41,6 +49,8 @@ body {
 .blue {
   --background: #0c2d48;
   --footer: #145da0;
+  --shade: #1a78d0;
+  --contrast: #00c950;
   --button: #145da0;
   --hover: #2e8bc0;
   --primary: #b1d4e0;
@@ -49,6 +59,8 @@ body {
 .red {
   --background: #fdb750;
   --footer: #FD7F20;
+  --shade: #ffa968;
+  --contrast: #000000;
   --button: #fc2e20;
   --hover: #FD7F20;
   --primary: #010100;
@@ -57,6 +69,8 @@ body {
 .green {
   --background: #ecf87f;
   --footer: #3d550c;
+  --shade: #273606;
+  --contrast: #00c950;
   --button: #3d550c;
   --hover: #81b622;
   --primary: #59981a;
@@ -65,6 +79,8 @@ body {
 .contrast {
   --background: #1c1c1c;
   --footer: #8900ff;
+  --shade: #6400bc;
+  --contrast: #00c950;
   --button: #8900ff;
   --hover: #ab4cff;
   --primary: #ffffff;
@@ -100,8 +116,19 @@ body {
   animation: fadeOutScaleDown 0.2s ease-out forwards;
 }
 
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  5% { opacity: 1; transform: translateY(0); }
+  95% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+.animate-fade-in-out {
+  animation: fadeInOut 2s ease-in-out forwards;
+}
+
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -116,4 +143,23 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--hover);
+}
+
+.container-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.container-scrollbar::-webkit-scrollbar-track {
+  background: var(--background);
+  border-radius: 10px;
+}
+
+.container-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--footer);
+  border-radius: 10px;
+}
+
+.container-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--shade);
 }

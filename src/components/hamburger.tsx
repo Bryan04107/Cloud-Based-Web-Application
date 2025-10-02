@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
 interface HamburgerMenuProps {
@@ -11,10 +11,36 @@ interface HamburgerMenuProps {
 
 export default function HamburgerMenu({ pathname, navLinks, aboutLink }: HamburgerMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setIsOpen(false);
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      window.addEventListener('scroll', handleScroll);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpen]);
 
   return (
     <div>
@@ -27,6 +53,7 @@ export default function HamburgerMenu({ pathname, navLinks, aboutLink }: Hamburg
       </div>
 
       <div
+        ref={menuRef}
         className={`
           fixed top-0 right-0 h-screen min-w-50 w-1/5 bg-background text-primary shadow-lg z-4 transform transition-transform duration-500 ease-in-out
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}

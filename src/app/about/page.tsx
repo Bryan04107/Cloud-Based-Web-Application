@@ -40,6 +40,10 @@ export default function AboutPage() {
             <li>Cookies!</li>
             <li>Funcitonal hamburger menu.</li>
             <li>Multiple selection of themes.</li>
+            <li>Tabs Header to create, edit, and delete headers.</li>
+            <li>Tabs Content to edit the content of the tab (accompanied with simple text editor tools).</li>
+            <li>Tabs Output to create an HTML pastable code of the tabs header along with their content.</li>
+            <li>Phone Flexing.</li>
           </ul>
         </div>
 
