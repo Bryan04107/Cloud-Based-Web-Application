@@ -106,10 +106,15 @@ export default function ThemeSelector() {
     <div className="relative">
       <button
         onClick={toggleMenu}
-        className="w-7 h-7 mx-2 rounded-full outline-2 outline-primary cursor-pointer translate-y-0.5"
+        aria-label="Select theme"
+        aria-expanded={showMenu}
+        aria-controls="theme-menu"
+        className="
+          w-8 h-8 mx-2 rounded-full outline-2 outline-transparent cursor-pointer hover:bg-shade
+					focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-contrast"
       >
         <div
-          className="-translate-y-[0.3rem] -translate-x-0.5"
+          className="-translate-y-[0.2rem]"
           style={{ fontSize: '1.5rem' }}>
           🎨
         </div>
@@ -118,18 +123,20 @@ export default function ThemeSelector() {
         <div
           ref={menuRef}
           className={`
-            absolute top-10 right-0 w-50 rounded-lg outline-2 outline-primary bg-background shadow-xl z-4
+            absolute top-10 right-0 w-50 rounded-lg outline-2 outline-primary bg-background shadow-xl z-3
             ${animateOut ? 'animate-fade-out-scale-down' : 'animate-fade-in-scale-up'}
           `}
         >
-          <ul>
+          <ul role="none">
             {Array.from(themeMap.entries()).map(([name, theme]) => (
-              <li key={theme}>
+              <li role="none" key={theme}>
                 <button
                   onClick={() => changeTheme(theme)}
+                  role="menuitem"
                   className={`
-                    flex items-center justify-between w-full px-4 py-2 text-left text-md text-primary hover:bg-hover 
-                    ${selectedTheme === theme ? 'bg-button' : ''}
+                    flex items-center justify-between rounded-md w-full px-4 py-2 text-left text-md text-primary hover:bg-hover focus:bg-hover
+                    ${selectedTheme === theme ? 'outline outline-transparent bg-button' : ''}
+                    focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-contrast
                   `}
                 >
                   <span>{name}</span>

@@ -5,17 +5,17 @@ import { useRouter } from 'next/navigation';
 
 
 export default function RootPage() {
- const router = useRouter();
+  const router = useRouter();
 
- useEffect(() => {
-  const lastPage = localStorage.getItem('lastPage');
+  useEffect(() => {
+    const lastPage = localStorage.getItem('lastPage');
 
-  if (lastPage && lastPage !== '/') {
-   router.push(lastPage);
-  } else {
-   router.push('/about');
-  }
- }, [router]);
+    if (lastPage && lastPage !== '/') {
+      router.push(lastPage);
+    } else {
+      router.push('/about');
+    }
+  }, [router]);
 
- return <div>Loading...</div>;
+  return <div>Loading...</div>;
 }

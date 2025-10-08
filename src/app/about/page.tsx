@@ -3,8 +3,8 @@ export default function AboutPage() {
   const studentNumber = '22586532';
 
   return (
-    <main className="container mx-auto px-4">
-      <div className="flex flex-col items-center w-full max-w-4xl mx-auto text-center bg-background p-8 shadow-lg">
+    <main className="container mx-0 sm:mx-auto px-0 sm:px-4">
+      <div className="flex flex-col items-center w-full max-w-4xl mx-0 sm:mx-auto p-8 text-center bg-background shadow-primary shadow-sm">
         <h1 className="text-4xl font-bold mb-4">
           About This Project
         </h1>
@@ -14,11 +14,11 @@ export default function AboutPage() {
           <p>This web application will be used as a tool that generates HTML and JavaScript content for deployment on the MOODLE LMS platform.</p>
         </div>
 
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="text-2xl font-semibold mb-2" id="how-to-use-heading">
           How to Use This Website
         </h2>
 
-        <div className="w-full max-w-lg aspect-video rounded-lg overflow-hidden shadow-lg mb-8">
+        <div role="region" aria-labelledby="how-to-use-heading" className="w-full max-w-lg aspect-video rounded-lg overflow-hidden shadow-lg mb-8">
           <iframe
             className="w-full h-full"
             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -28,11 +28,11 @@ export default function AboutPage() {
           ></iframe>
         </div>
 
-        <div className="mb-8 w-full pl-18 pr-18">
-          <h2 className="text-2xl font-semibold mb-4">
+        <div className="mb-8 w-full px-0 sm:px-18">
+          <h2 className="text-2xl font-semibold mb-4" id="features-heading">
             Features Implemented
           </h2>
-          <ul className="list-disc list-inside text-left mx-auto space-y-2">
+          <ul role="list" aria-labelledby="features-heading" className="list-disc list-inside text-left mx-auto space-y-2">
             <li>Basic pages for Tabs, Pre-lab Questions, Escape Room, and Coding Races.</li>
             <li>Functional About Page containing informational video regarding the applications funtionality.</li>
             <li>A responsive navigation menu with working links for each page.</li>
@@ -40,15 +40,15 @@ export default function AboutPage() {
             <li>Cookies!</li>
             <li>Funcitonal hamburger menu.</li>
             <li>Multiple selection of themes.</li>
-            <li>Tabs Header to create, edit, and delete headers.</li>
+            <li>Tabs Header to create, edit (accompanied with simple text editor tools), and delete headers.</li>
             <li>Tabs Content to edit the content of the tab (accompanied with simple text editor tools).</li>
-            <li>Tabs Output to create an HTML pastable code of the tabs header along with their content.</li>
+            <li>Tabs Output to create an HTML pastable/downloadable code of the tabs header along with their associated content.</li>
             <li>Phone Flexing.</li>
           </ul>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-semibold mb-2">
+        <div role="region" aria-labelledby="my-details-heading">
+          <h2 className="text-2xl font-semibold mb-2" id="my-details-heading">
             My Details
           </h2>
           <p>Name: {studentName}</p>
