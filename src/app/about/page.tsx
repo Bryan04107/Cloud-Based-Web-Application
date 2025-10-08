@@ -18,10 +18,10 @@ export default function AboutPage() {
           How to Use This Website
         </h2>
 
-        <div role="region" aria-labelledby="how-to-use-heading" className="w-full max-w-lg aspect-video rounded-lg overflow-hidden shadow-lg mb-8">
+        <div role="region" aria-labelledby="how-to-use-heading" className="min-w-full max-w-lg aspect-video rounded-lg overflow-hidden shadow-lg px-8 mb-8">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            src="https://www.youtube.com/embed/BALWMaydv_E"
             title="Temporary Placeholder Video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

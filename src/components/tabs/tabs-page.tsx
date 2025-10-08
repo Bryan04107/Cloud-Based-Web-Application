@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import TabsHeader from './tabs-header';
 import TabsContent from './tabs-content';
 import TabsOutput from './tabs-output';
