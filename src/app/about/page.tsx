@@ -4,7 +4,7 @@ export default function AboutPage() {
 
   return (
     <main className="container mx-auto px-4">
-      <div className="flex flex-col items-center w-full max-w-4xl mx-auto text-center bg-white p-8 shadow-lg">
+      <div className="flex flex-col items-center w-full max-w-4xl mx-auto text-center bg-background p-8 shadow-lg">
         <h1 className="text-4xl font-bold mb-4">
           About This Project
         </h1>
@@ -37,6 +37,9 @@ export default function AboutPage() {
             <li>Functional About Page containing informational video regarding the applications funtionality.</li>
             <li>A responsive navigation menu with working links for each page.</li>
             <li>A fully functional sticky header and footer that appear on every page.</li>
+            <li>Cookies!</li>
+            <li>Funcitonal hamburger menu.</li>
+            <li>Multiple selection of themes.</li>
           </ul>
         </div>
 

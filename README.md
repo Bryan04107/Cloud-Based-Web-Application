@@ -9,6 +9,9 @@ This will is the first part of a larger project.
 2. Functional navigation bar.
 3. Functional header and footer.
 4. Linked placeholder pages
+5. Cookies for tabs and user themes.
+6. Functional hamburger menu.
+7. Five themes implemented to choose from (detects user system theme).
 
 ## How to Run Locally
 

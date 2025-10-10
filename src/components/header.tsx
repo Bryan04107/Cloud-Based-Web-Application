@@ -2,9 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import HamburgerMenu from './hamburger';
+import ThemeSelector from './theme';
 
 export default function Header() {
   const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname !== '/') {
+      localStorage.setItem('lastPage', pathname);
+    }
+  }, [pathname]);
 
   const navLinks = [
     { name: "Tabs", href: "/tabs" },
@@ -14,42 +23,43 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white text-zinc-800 p-4 shadow-md">
+    <header className="sticky top-0 z-2 bg-background text-primary p-4 shadow-md border-b-2">
       <div className="flex justify-between items-center mb-2">
         <div className="text-2xl font-bold">LTU Moodle Builder</div>
         <div className="text-lg font-semibold">22586532</div>
       </div>
 
       <div className="flex justify-between items-center">
-        <nav className="flex space-x-4">
+        <nav className="hidden md:flex space-x-4">
           {navLinks.map((link, index) => (
             <div key={link.name} className="flex items-center">
               <Link
                 href={link.href}
                 className={`
-                  p-1 rounded-md outline outline-1 transition-colors duration-200
-                  ${pathname === link.href ? "outline-zinc-800 bg-zinc-200" : "outline-transparent hover:bg-zinc-100"}
+                  p-1 rounded-md outline outline-1 transition-colors duration-250 
+                  ${pathname === link.href ? "outline-primary bg-button" : "outline-transparent hover:bg-hover"}
                 `}
               >
                 {link.name}
               </Link>
-              {index < navLinks.length - 1 && <span className="text-zinc-800 ml-4">|</span>}
+              {index < navLinks.length - 1 && <span className="text-primary ml-4">|</span>}
             </div>
           ))}
         </nav>
+       <div />
         <div className="flex items-center space-x-4">
           <Link
             href="/about"
-            className={`hover:text-zinc-400 ${pathname === '/about' ? 'outline outline-1 outline-zinc-800 bg-zinc-200 p-1 rounded-md' : ''}`}
+            className={`
+              p-1 rounded-md outline outline-1 transition-colors duration-250 
+              ${pathname === '/about' ? "outline-primary bg-button" : "outline-transparent hover:bg-hover"}
+            `}
           >
             About
           </Link>
-          <div className="cursor-pointer">
-            <div className="space-y-1">
-              <div className="w-6 h-1 bg-zinc-800"></div>
-              <div className="w-6 h-1 bg-zinc-800"></div>
-              <div className="w-6 h-1 bg-zinc-800"></div>
-            </div>
+          <ThemeSelector />
+          <div className="flex items-center space-x-4">
+            <HamburgerMenu pathname={pathname} navLinks={navLinks} aboutLink={{ name: 'About', href: '/about' }} />
           </div>
         </div>
       </div>
