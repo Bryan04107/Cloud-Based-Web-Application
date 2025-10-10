@@ -17,91 +17,62 @@ export default function TabsOutput({ tabs }: TabsOutputProps) {
 <html>
 <head>
   <title>Tabs</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-    .tabs-container {
-      width: 95vw;
-      height: 91vh;
-      margin: 4.5vh 2.5vw;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      display: flex;
-    }
-    .tabs {
-      display: flex;
-      flex-direction: column;
-      border-right: 2px solid #e0e0e0;
-      background-color: #fafafa;
-      width: 20%;
-    }
-    .tablinks {
-      padding: 15px 25px;
-      cursor: pointer;
-      border: none;
-      background-color: transparent;
-      font-weight: 600;
-      color: #555;
-      transition: background-color 0.3s, color 0.3s;
-      text-align: left;
-    }
-    .tablinks:hover {
-      background-color: #f0f0f0;
-      color: #000;
-    }
-    .tablinks.active {
-      background-color: #e0e0e0;
-      color: #000;
-    }
-    .tabcontent-wrapper {
-      width: 80%;
-      flex-grow: 1;
-      padding: 10px 20px;
-      overflow-y: scroll;
-    }
-    .tabcontent {
-      display: none;
-    }
-    .tabcontent pre {
-      white-space: pre-wrap;
-      word-break: break-all;
-      background-color: #f9f9f9;
-      padding: 15px;
-      border-radius: 6px;
-      line-height: 1.6;
-    }
-  </style>
 </head>
-<body>
-  <div class="tabs-container">
-    <div class="tabs" role="tablist">
-      ${tabs.map(tab => `<button class="tablinks" role="tab" onclick="openTab(event, 'tab-${tab.id}')" aria-controls="tab-${tab.id}" aria-selected="${tab.id === 1}">${tab.title}</button>`).join('\n      ')}
+<body style="font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f9;">
+  <div style="width: 95vw; height: 91vh; margin: 4.5vh 2.5vw; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; display: flex;">
+    <div style="display: flex; flex-direction: column; border-right: 2px solid #e0e0e0; background-color: #fafafa; width: 20%; overflow-y: scroll;">
+      ${tabs.map((tab, index) => {
+        const isActive = index === 0;
+        const buttonStyle = `
+          padding: 15px 25px;
+          cursor: pointer;
+          border: none;
+          background-color: ${isActive ? '#e0e0e0' : 'transparent'};
+          font-weight: 600;
+          color: #555;
+          transition: background-color 0.3s, color 0.3s;
+          text-align: left;
+          white-space: normal;
+          word-break: break-all;
+        `.replace(/\s+/g, ' ').trim();
+        return `<button role="tab" onclick="openTab(event, 'tab-${tab.id}')" aria-controls="tab-${tab.id}" aria-selected="${isActive}" style="${buttonStyle}">${tab.title}</button>`;
+      }).join('\n      ')}
     </div>
-    <div class="tabcontent-wrapper">
-      ${tabs.map(tab => `<div id="tab-${tab.id}" class="tabcontent" role="tabpanel" aria-labelledby="tab-button-${tab.id}"><pre>${tab.content}</pre></div>`).join('\n      ')}
+    <div style="width: 80%; flex-grow: 1; padding: 10px 20px; overflow-y: scroll;">
+      ${tabs.map((tab, index) => {
+        const contentStyle = `
+          display: ${index === 0 ? 'block' : 'none'};
+          padding: 20px;
+        `.replace(/\s+/g, ' ').trim();
+        const preStyle = `
+          white-space: pre-wrap;
+          word-break: break-all;
+          background-color: #f9f9f9;
+          padding: 15px;
+          border-radius: 6px;
+          line-height: 1.6;
+        `.replace(/\s+/g, ' ').trim();
+        return `<div id="tab-${tab.id}" role="tabpanel" aria-labelledby="tab-button-${tab.id}" style="${contentStyle}"><pre style="${preStyle}">${tab.content}</pre></div>`;
+      }).join('\n    ')}
     </div>
   </div>
   <script>
     function openTab(evt, tabId) {
       var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
+      tabcontent = document.querySelectorAll('[id^="tab-"]');
       for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
       }
-      tablinks = document.getElementsByClassName("tablinks");
+      tablinks = document.querySelectorAll('button[onclick^="openTab"]');
       for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].style.backgroundColor = "transparent";
+        tablinks[i].style.color = "#555";
       }
       document.getElementById(tabId).style.display = "block";
-      evt.currentTarget.className += " active";
+      evt.currentTarget.style.backgroundColor = "#e0e0e0";
+      evt.currentTarget.style.color = "#000";
     }
-    document.getElementsByClassName("tablinks")[0].click();
+    document.querySelector('button[onclick^="openTab"]').click();
   </script>
 </body>
 </html>`;
