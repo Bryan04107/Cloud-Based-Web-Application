@@ -10,13 +10,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen bg-background text-primary">
-        <Header />
+      <Header />
 
-        <main className='flex-grow'>
-            {children}
-        </main>
-
-        <Footer />
+      <main className='flex flex-grow'>
+        {children}
+      </main>
+ 
+      <Footer />
       </body>
     </html>
   );

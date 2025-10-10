@@ -8,6 +8,6 @@ export default function Footer() {
       <p className="space-x-1">
         Copyright © 2025 - {studentName} - {studentNumber} - {currentDate}
       </p>
-    </footer>
+     </footer>
   );
 }
