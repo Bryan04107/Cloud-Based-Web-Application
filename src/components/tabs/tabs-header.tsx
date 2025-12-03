@@ -43,6 +43,7 @@ export default function TabsHeader({
           <h2 className="text-l font-bold whitespace-nowrap pr-4">Tabs Headers:</h2>
           <button
             onClick={addTab}
+            aria-label="Add new tab"
             className="
               cursor-pointer bg-button text-primary p-1 rounded-md hover:bg-shade
               focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-contrast focus-visible:outline-offset-4"
@@ -77,6 +78,7 @@ export default function TabsHeader({
                     </button>
                     <button
                       onClick={() => openTabMenu(tab)}
+                      aria-label={`Options for ${tab.title}`}
                       className="
                         mx-1 p-1 bg-button text-primary rounded-md hover:bg-shade
                         hidden group-hover:flex group-focus-within:flex focus-visible:outline-contrast">

@@ -64,6 +64,8 @@ export default function HamburgerMenu({ pathname, navLinks }: HamburgerMenuProps
           focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-contrast"
         onClick={toggleMenu}
         aria-label="Toggle navigation menu"
+        aria-expanded={isOpen}
+        aria-controls="hamburger-menu"
       >
         <div className="flex-1 space-y-1 p-1.5 rounded-md hover:bg-shade">
           <div className="w-6 h-1 bg-primary"></div>
@@ -101,9 +103,10 @@ export default function HamburgerMenu({ pathname, navLinks }: HamburgerMenuProps
                 </button>
               </div>
               
-              <nav role="none" className="flex flex-col text-left border-t-2 border-primary">
+              <nav aria-label="Hamburger Navigation" className="flex flex-col text-left border-t-2 border-primary">
+                <ul className="flex flex-col">
                 {navLinks.map(link => (
-                  <li key={link.name} role="none" className="list-none border-b-2 border-primary" onClick={toggleMenu}>
+                  <li key={link.name} className="list-none border-b-2 border-primary" onClick={toggleMenu}>
                     <Link
                       href={link.href}
                       aria-current={pathname === link.href ? "page" : undefined}
@@ -116,7 +119,7 @@ export default function HamburgerMenu({ pathname, navLinks }: HamburgerMenuProps
                       {link.name}
                     </Link>
                   </li>
-                ))}
+                ))}</ul>
               </nav>
             </div>
           )}

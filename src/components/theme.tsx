@@ -17,7 +17,7 @@ const themeColors = new Map<string, string[]>([
   ['dark', ['bg-[#000]', 'bg-[#27272a]', 'bg-[#27272a]', 'bg-[#18181b]', 'bg-[#d4d4d8]']],
   ['blue', ['bg-[#0c2d48]', 'bg-[#145da0]', 'bg-[#145da0]', 'bg-[#2e8bc0]', 'bg-[#b1d4e0]']],
   ['red', ['bg-[#fdb750]', 'bg-[#FD7F20]', 'bg-[#fc2e20]', 'bg-[#FD7F20]', 'bg-[#010100]']],
-  ['green', ['bg-[#ecf87f]', 'bg-[#3d550c]', 'bg-[#3d550c]', 'bg-[#81b622]', 'bg-[#59981a]']],
+  ['green', ['bg-[#ecf87f]', 'bg-[#3d550c]', 'bg-[#3d550c]', 'bg-[#81b622]', 'bg-[#2f4d0e]']],
   ['contrast', ['bg-[#1c1c1c]', 'bg-[#8900ff]', 'bg-[#8900ff]', 'bg-[#ab4cff]', 'bg-[#ffffff]']],
 ]);
 
