@@ -74,18 +74,23 @@ export default function EscapeRoomGamePanel({
     onHotspotMove(hotspotId, Math.round(percentX), Math.round(percentY));
   };
 
-  const getHotspotIcon = (h: Hotspot, isSolved: boolean, isLocked: boolean) => {
-    if (isPlayMode && isLocked) return '🔒';
-    if (h.type === 'guide') return '📜';
-    if (isSolved) return '✓';
-
-    switch (h.type) {
-      case 'code': return '💻';
-      case 'mcq_single': return '❓';
-      case 'mcq_multi': return '❓';
-      default: return '📜';
-    }
-  };
+const getHotspotIcon = (h: Hotspot, isSolved: boolean, isLocked: boolean) => {
+  const iconStyle = { width: '80%', height: '80%', objectFit: 'contain' as const };
+  if (isPlayMode && isLocked) {
+    return <img src="/lock.svg" alt="lock" style={iconStyle} />;
+  }
+  if (isSolved) return '✓';
+  if (h.type === 'guide') {
+    return <img src="/guide.svg" alt="guide" style={iconStyle} />;
+  }
+  if (h.type === 'code') {
+    return <img src="/code.svg" alt="code" style={iconStyle} />;
+  }
+  if (h.type === 'mcq_single' || h.type === 'mcq_multi') {
+    return <img src="/mcq.svg" alt="mcq" style={iconStyle} />;
+  }
+  return <img src="/guide.svg" alt="Guide" style={iconStyle} />;
+};
 
   return (
     <div className="w-2/3 bg-hover/100 relative flex items-center justify-center p-4 overflow-hidden h-full">
