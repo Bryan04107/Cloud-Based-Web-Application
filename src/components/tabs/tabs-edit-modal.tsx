@@ -37,15 +37,16 @@ export default function TabsEditModal({
     setNewTitle(tabToEdit.title);
     if (inputRef.current) {
       inputRef.current.innerHTML = tabToEdit.title;
+      inputRef.current.focus();
     }
   }, [tabToEdit]);
 
   const rgbToHex = (rgb: string) => {
     if (rgb.startsWith('#')) return rgb;
-    const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+      const parts = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     if (!parts) return '#000000';
-    const [, ...rgbValues] = parts;
-    const hexParts = rgbValues.map(part => {
+      const [, ...rgbValues] = parts;
+      const hexParts = rgbValues.map(part => {
       const hex = parseInt(part).toString(16);
       return hex.length === 1 ? '0' + hex : hex;
     });

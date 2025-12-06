@@ -17,16 +17,26 @@ const themeColors = new Map<string, string[]>([
   ['dark', ['bg-[#000]', 'bg-[#27272a]', 'bg-[#27272a]', 'bg-[#18181b]', 'bg-[#d4d4d8]']],
   ['blue', ['bg-[#0c2d48]', 'bg-[#145da0]', 'bg-[#145da0]', 'bg-[#2e8bc0]', 'bg-[#b1d4e0]']],
   ['red', ['bg-[#fdb750]', 'bg-[#FD7F20]', 'bg-[#fc2e20]', 'bg-[#FD7F20]', 'bg-[#010100]']],
-  ['green', ['bg-[#ecf87f]', 'bg-[#3d550c]', 'bg-[#3d550c]', 'bg-[#81b622]', 'bg-[#59981a]']],
+  ['green', ['bg-[#ecf87f]', 'bg-[#3d550c]', 'bg-[#3d550c]', 'bg-[#81b622]', 'bg-[#2f4d0e]']],
   ['contrast', ['bg-[#1c1c1c]', 'bg-[#8900ff]', 'bg-[#8900ff]', 'bg-[#ab4cff]', 'bg-[#ffffff]']],
 ]);
 
-export default function ThemeSelector() {
+interface ThemeSelectorProps {
+  onMenuOpen?: (isOpen: boolean) => void;
+}
+
+export default function ThemeSelector({ onMenuOpen }: ThemeSelectorProps) {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState('system');
   const [animateOut, setAnimateOut] = useState(false);
   const [systemThemePreference, setSystemThemePreference] = useState('light');
   const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (onMenuOpen) {
+      onMenuOpen(showMenu);
+    }
+  }, [showMenu, onMenuOpen]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -92,7 +102,8 @@ export default function ThemeSelector() {
     setTimeout(() => setShowMenu(false), 200);
   };
 
-  const toggleMenu = () => {
+  const toggleMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (showMenu) {
       setAnimateOut(true);
       setTimeout(() => setShowMenu(false), 200);
@@ -123,7 +134,7 @@ export default function ThemeSelector() {
         <div
           ref={menuRef}
           className={`
-            absolute top-10 right-0 w-50 rounded-lg outline-2 outline-primary bg-background shadow-xl z-3
+            absolute top-10 right-0 w-50 rounded-lg outline-2 outline-primary bg-background shadow-xl z-33
             ${animateOut ? 'animate-fade-out-scale-down' : 'animate-fade-in-scale-up'}
           `}
         >

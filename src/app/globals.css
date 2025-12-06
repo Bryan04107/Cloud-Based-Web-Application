@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 @theme {
@@ -69,11 +69,11 @@ body {
 .green {
   --background: #ecf87f;
   --footer: #3d550c;
-  --shade: #273606;
-  --contrast: #59981a;
-  --button: #3d550c;
+  --shade: #52740a;
+  --contrast: #416e12;
+  --button: #6c9814;
   --hover: #81b622;
-  --primary: #59981a;
+  --primary: #2f4d0e;
 }
 
 .contrast {
