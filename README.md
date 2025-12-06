@@ -16,6 +16,11 @@ This will is the first part of a larger project.
 9. Customizable inputs for Tabs Header and Content.
 10. Tabs Page with functional HTML output.
 11. Simple Walkthrough Video attached to About Page on how to use Tabs Page.
+12. Added Loading and Not Found Page.
+13. Escape Room Page.
+14. Functional Escape Room Timer.
+15. Functional Escape Rooom HTML Output.
+16. Allows Multiple Different Question Type and Additional Options.
 
 ## How to Run Locally
 

@@ -100,7 +100,7 @@ export default function TabsContent({ tabs, activeTab, onContentUpdate }: TabsCo
         onMouseUp={checkFormatting}
         onKeyUp={checkFormatting}
         onBlur={resetFormatting}
-        className="max-h-[calc(100vh-106.74px-55.99px-39.96px-64px-8px)] flex-grow p-2 border border-shade rounded-md overflow-auto focus:outline-none"
+        className="min-h-32 flex-grow p-2 border border-shade rounded-md overflow-auto focus:outline-none"
       />
     </div>
   );

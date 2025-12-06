@@ -104,7 +104,7 @@ export default function TabsOutput({ tabs }: TabsOutputProps) {
   };
 
   return (
-    <div className="flex flex-1 flex-col w-full md:w-1/3 md:h-full md:max-h-[calc(100vh-106.74px-55.99px-32px)] bg-hover text-primary p-4 pt-3 rounded-lg shadow-md">
+    <div className="flex flex-1 flex-col w-full md:w-1/3 md:h-full md:max-h-full bg-hover text-primary p-4 pt-3 rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-3 space-x-4">
         <button
           onClick={generateHtml}
@@ -129,7 +129,7 @@ export default function TabsOutput({ tabs }: TabsOutputProps) {
           </button>
         </div>
       </div>
-      <pre className="flex-grow p-2 min-h-10 bg-primary text-background overflow-auto container-scrollbar text-sm rounded-md">
+      <pre className="flex-grow p-2 min-h-32 bg-primary text-background overflow-auto container-scrollbar text-sm rounded-md">
         {outputHtml}
       </pre>
       {showCopyPopup && (

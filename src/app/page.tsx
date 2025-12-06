@@ -16,6 +16,4 @@ export default function RootPage() {
       router.push('/about');
     }
   }, [router]);
-
-  return <div>Loading...</div>;
 }

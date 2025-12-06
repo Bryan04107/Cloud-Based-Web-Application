@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import HamburgerMenu from './hamburger';
 import ThemeSelector from './theme';
 
 export default function Header() {
   const pathname = usePathname();
+  const [isAnyMenuOpen, setIsAnyMenuOpen] = useState(false);
 
   useEffect(() => {
     if (pathname !== '/') {
@@ -24,14 +25,14 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-2 bg-background text-primary p-4 shadow-md border-b-2">
+    <header className={`sticky top-0 bg-background text-primary p-4 shadow-md border-b-2 transition-all ${isAnyMenuOpen ? 'z-32' : 'z-2'}`}>
       <div className="flex justify-between items-center">
         <div className="text-2xl font-bold whitespace-nowrap md:mb-2">LTU Moodle Builder</div>
         <div className="flex items-center">
           <div className="text-lg font-semibold hidden sm:flex md:pt-1">22586532</div>
           <div className="flex items-center space-x-2 pl-4 md:hidden">
-            <ThemeSelector />
-            <HamburgerMenu pathname={pathname} navLinks={navLinks} />
+            <ThemeSelector onMenuOpen={setIsAnyMenuOpen} />
+            <HamburgerMenu pathname={pathname} navLinks={navLinks} onMenuOpen={setIsAnyMenuOpen} />
           </div>
         </div>
       </div>
@@ -45,7 +46,7 @@ export default function Header() {
                 aria-current={pathname === link.href ? "page" : undefined}
                 className={`
                   p-1 rounded-md transition-colors duration-250
-                  ${pathname === link.href ? "outline outline-1 outline-primary bg-button" : "outline-transparent hover:bg-hover"}
+                  ${pathname === link.href ? "outline-1 outline-primary bg-button" : "outline-transparent hover:bg-hover"}
                   focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-contrast focus-visible:outline-offset-4
                 `}
               >
@@ -56,9 +57,9 @@ export default function Header() {
             </div>
           ))}
         </nav>
-        <div className="flex items-center hidden md:flex">
-          <ThemeSelector />
-          <HamburgerMenu pathname={pathname} navLinks={navLinks} />
+        <div className="items-center hidden md:flex">
+          <ThemeSelector onMenuOpen={setIsAnyMenuOpen} />
+          <HamburgerMenu pathname={pathname} navLinks={navLinks} onMenuOpen={setIsAnyMenuOpen} />
         </div>
       </div>
     </header>

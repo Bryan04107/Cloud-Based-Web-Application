@@ -21,12 +21,22 @@ const themeColors = new Map<string, string[]>([
   ['contrast', ['bg-[#1c1c1c]', 'bg-[#8900ff]', 'bg-[#8900ff]', 'bg-[#ab4cff]', 'bg-[#ffffff]']],
 ]);
 
-export default function ThemeSelector() {
+interface ThemeSelectorProps {
+  onMenuOpen?: (isOpen: boolean) => void;
+}
+
+export default function ThemeSelector({ onMenuOpen }: ThemeSelectorProps) {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState('system');
   const [animateOut, setAnimateOut] = useState(false);
   const [systemThemePreference, setSystemThemePreference] = useState('light');
   const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (onMenuOpen) {
+      onMenuOpen(showMenu);
+    }
+  }, [showMenu, onMenuOpen]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -92,7 +102,8 @@ export default function ThemeSelector() {
     setTimeout(() => setShowMenu(false), 200);
   };
 
-  const toggleMenu = () => {
+  const toggleMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (showMenu) {
       setAnimateOut(true);
       setTimeout(() => setShowMenu(false), 200);
@@ -123,7 +134,7 @@ export default function ThemeSelector() {
         <div
           ref={menuRef}
           className={`
-            absolute top-10 right-0 w-50 rounded-lg outline-2 outline-primary bg-background shadow-xl z-3
+            absolute top-10 right-0 w-50 rounded-lg outline-2 outline-primary bg-background shadow-xl z-33
             ${animateOut ? 'animate-fade-out-scale-down' : 'animate-fade-in-scale-up'}
           `}
         >
