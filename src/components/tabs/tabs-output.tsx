@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { Tab } from './tabs-page';
+import { toast } from 'sonner';
 
 interface TabsOutputProps {
   tabs: Tab[];
@@ -9,8 +10,6 @@ interface TabsOutputProps {
 
 export default function TabsOutput({ tabs }: TabsOutputProps) {
   const [outputHtml, setOutputHtml] = useState('');
-  const [showCopyPopup, setShowCopyPopup] = useState(false);
-  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
 
   const generateHtml = () => {
     const htmlString = `<!DOCTYPE html>
@@ -81,10 +80,7 @@ export default function TabsOutput({ tabs }: TabsOutputProps) {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(outputHtml);
-    setShowCopyPopup(true);
-    setTimeout(() => {
-      setShowCopyPopup(false);
-    }, 2000);
+    toast.success('Copied to clipboard!');
   };
 
   const downloadHtml = () => {
@@ -97,10 +93,7 @@ export default function TabsOutput({ tabs }: TabsOutputProps) {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    setShowDownloadPopup(true);
-    setTimeout(() => {
-      setShowDownloadPopup(false);
-    }, 2000);
+    toast.success('Download successful!');
   };
 
   return (
@@ -132,16 +125,6 @@ export default function TabsOutput({ tabs }: TabsOutputProps) {
       <pre className="flex-grow p-2 min-h-32 bg-primary text-background overflow-auto container-scrollbar text-sm rounded-md">
         {outputHtml}
       </pre>
-      {showCopyPopup && (
-        <div className="fixed bottom-10 right-10 p-2 px-4 rounded-lg bg-green-500 text-white shadow-lg animate-fade-in-out">
-          Copied to clipboard!
-        </div>
-      )}
-      {showDownloadPopup && (
-        <div className="fixed bottom-10 right-10 p-2 px-4 rounded-lg bg-green-500 text-white shadow-lg animate-fade-in-out">
-          Download successful!
-        </div>
-      )}
     </div>
   );
 }

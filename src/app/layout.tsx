@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import type { Metadata } from 'next';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: 'LTU Moodle Builder',
@@ -23,6 +24,7 @@ export default function RootLayout({
       </main>
  
       <Footer />
+      <Toaster position="bottom-right" richColors duration={1500}/>
       </body>
     </html>
   );

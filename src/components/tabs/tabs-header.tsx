@@ -39,7 +39,7 @@ export default function TabsHeader({
   return (
     <>
       <div className="flex flex-1 flex-col w-full max-h-68 md:min-w-[12rem] md:max-w-60 md:min-h-full md:max-h-full bg-hover p-4 rounded-lg shadow-md">
-        <div className="flex justify-between items-center sticky top-0 bg-hover pb-2 z-1">
+        <div className="flex justify-between items-center top-0 bg-hover pb-2 z-1">
           <h2 className="text-l font-bold whitespace-nowrap pr-4">Tabs Headers:</h2>
           <button
             onClick={addTab}

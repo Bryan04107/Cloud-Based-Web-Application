@@ -93,7 +93,7 @@ const getHotspotIcon = (h: Hotspot, isSolved: boolean, isLocked: boolean) => {
 };
 
   return (
-    <div className="w-2/3 bg-hover/100 relative flex items-center justify-center p-4 overflow-hidden h-full">
+    <div className="w-full md:w-2/3 bg-hover/100 relative flex items-center justify-center p-4 overflow-hidden min-h-full md:h-full">
       {isPlayMode && (
         <div className="absolute top-4 right-4 z-[19] flex gap-4 pointer-events-none">
           <div className="bg-black/70 text-white px-4 py-2 rounded-lg border-2 border-white/20 shadow-xl backdrop-blur-md">

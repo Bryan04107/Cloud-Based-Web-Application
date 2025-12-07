@@ -17,14 +17,17 @@ This will is the first part of a larger project.
 10. Tabs Page with functional HTML output.
 11. Simple Walkthrough Video attached to About Page on how to use Tabs Page.
 12. Added Loading and Not Found Page.
-13. Escape Room Page.
+13. Escape Room Page Frontend.
 14. Functional Escape Room Timer.
-15. Functional Escape Rooom HTML Output.
-16. Allows Multiple Different Question Type and Additional Options.
+15. Functional Escape Room HTML Output.
+16. Custom made SVGs for Icons in the Escape Room.
+17. Allows Multiple Different Question Type (Multiple Choice, Code Correction, and Info/Guide hotspots).
+18. Escape Room Page CRUD Backend and Local SQLite database and Prisma ORM.
 
 ## How to Run Locally
 
 1. Clone the repository.
 2. Install dependencies with `npm install`.
-3. Run the development server with `npm run dev`.
-4. Check the page result at http://localhost:3000.
+3.  Initialize the Database with `npx prisma db push`.
+4. Run the development server with `npm run dev`.
+5. Check the page result at http://localhost:3000.

@@ -8,6 +8,7 @@ import DeleteModal from '@/components/escape-room/escape-room-delete-modal';
 import { generateEscapeRoomHtml } from '@/lib/generate-escape-room';
 import BuilderPanel from '@/components/escape-room/escape-room-builder-panel';
 import GamePanel from '@/components/escape-room/escape-room-game-panel';
+import { toast } from 'sonner';
 
 interface EditorPageProps {
   initialConfig?: EscapeRoomConfig;
@@ -31,8 +32,6 @@ export default function EscapeRoomEditorPage({
 
   const [baselineConfig, setBaselineConfig] = useState<string>(JSON.stringify(config));
   const [showDiscardAlert, setShowDiscardAlert] = useState(false);
-  const [showSavePopup, setShowSavePopup] = useState(false);
-  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingHotspot, setEditingHotspot] = useState<Hotspot | undefined>(undefined);
   const [hotspotToDelete, setHotspotToDelete] = useState<string | null>(null);
@@ -51,10 +50,7 @@ export default function EscapeRoomEditorPage({
   const handleSaveOnly = () => {
     onSave(config);
     setBaselineConfig(JSON.stringify(config));
-    setShowSavePopup(true);
-    setTimeout(() => {
-      setShowSavePopup(false);
-    }, 2000);
+    toast.success('Room saved successfully!');
   };
 
   const handleBackRequest = () => {
@@ -99,10 +95,7 @@ export default function EscapeRoomEditorPage({
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    setShowDownloadPopup(true);
-    setTimeout(() => {
-      setShowDownloadPopup(false);
-    }, 2000);
+    toast.success('Room downloaded successfully!');
   };
 
   useEffect(() => {
@@ -131,6 +124,7 @@ export default function EscapeRoomEditorPage({
       const reader = new FileReader();
       reader.onloadend = () => {
         setConfig(prev => ({ ...prev, backgroundImage: reader.result as string }));
+        toast.success('Background image updated!');
       };
       reader.readAsDataURL(file);
     }
@@ -167,6 +161,7 @@ export default function EscapeRoomEditorPage({
   const confirmDeleteHotspot = () => {
     if (hotspotToDelete) {
       setConfig(prev => ({ ...prev, hotspots: prev.hotspots.filter(h => h.id !== hotspotToDelete) }));
+      toast.success('Puzzle deleted succesfully!');
       setHotspotToDelete(null);
       if (editingHotspot?.id === hotspotToDelete) {
         setIsModalOpen(false);
@@ -237,7 +232,7 @@ export default function EscapeRoomEditorPage({
   const hotspotToDeleteName = config.hotspots.find(h => h.id === hotspotToDelete)?.name || "this puzzle";
 
   return (
-    <div className="flex flex-row w-full max-h-[calc(100vh-106.74px-63.99px)] overflow-hidden">
+    <div className="flex flex-col md:flex-row w-full max-h-[calc(100vh-73.49px-55.99px)] md:max-h-[calc(100vh-113.47px-55.99px)] overflow-auto md:overflow-hidden">
       <BuilderPanel
         config={config}
         setConfig={setConfig}
@@ -326,18 +321,6 @@ export default function EscapeRoomEditorPage({
               </button>
             </div>
           </div>
-        </div>
-      )}
-
-      {showSavePopup && (
-        <div className="fixed bottom-10 right-10 p-2 px-4 rounded-lg bg-green-500 text-white shadow-lg animate-fade-in-out">
-          Save successful!
-        </div>
-      )}
-
-      {showDownloadPopup && (
-        <div className="fixed bottom-10 right-10 p-2 px-4 rounded-lg bg-green-500 text-white shadow-lg animate-fade-in-out">
-          Download successful!
         </div>
       )}
     </div>

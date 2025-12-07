@@ -35,7 +35,7 @@ export default function EscapeRoomBuilderPanel({
   const [isSettingsExpanded, setIsSettingsExpanded] = useState(true);
 
   return (
-    <div className="w-1/3 bg-background border-r-2 border-primary flex flex-col h-full overflow-hidden relative">
+    <div className="w-full md:w-1/3 bg-background border-b-2 md:border-b-0 md:border-r-2 border-primary flex flex-col h-auto md:h-full shrink-0 overflow-hidden relative">
       <div className="flex-none p-4 pb-2 z-10 bg-background border-b border-primary/10 flex items-center justify-between gap-2">
         <button onClick={onBack} className="text-sm font-bold text-gray-500 hover:text-primary transition-colors cursor-pointer">
           ← Back
@@ -150,7 +150,7 @@ export default function EscapeRoomBuilderPanel({
               [+]
             </button>
           </div>
-          <div className="space-y-2 overflow-y-auto container-scrollbar flex-grow pr-1">
+          <div className="space-y-2 overflow-y-auto container-scrollbar flex-grow pr-1 max-h-60 md:max-h-none">
             {config.hotspots.length === 0 && <p className="text-gray-500 italic text-sm">No hotspots added.</p>}
             {config.hotspots.map(h => (
               <div key={h.id} className="flex justify-between items-center rounded border border-transparent bg-hover hover:border-primary group text-sm">

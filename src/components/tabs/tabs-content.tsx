@@ -81,7 +81,7 @@ export default function TabsContent({ tabs, activeTab, onContentUpdate }: TabsCo
 
   return (
     <div className="flex flex-1 flex-col w-full md:min-w-[17rem] md:w-1/3 md:h-full bg-hover p-4 rounded-lg shadow-md">
-      <div className="flex justify-between items-center sticky top-0 bg-hover mb-4">
+      <div className="flex justify-between items-center top-0 bg-hover mb-4">
         <h2 className="text-l font-bold whitespace-nowrap pr-4">Tabs Content</h2>
         <TextEditorToolbar
           isBold={isBold}

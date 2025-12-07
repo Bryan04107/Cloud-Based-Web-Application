@@ -44,7 +44,7 @@ export default function AboutPage() {
             <li>Tabs Content to edit the content of the tab (accompanied with simple text editor tools).</li>
             <li>Tabs Output to create an HTML pastable/downloadable code of the tabs header along with their associated content.</li>
             <li>Phone Flexing.</li>
-            <li>Fully functional Escape Room page.</li>
+            <li>Fully functional Escape Room page with custom icons and working timer.</li>
           </ul>
         </div>
 
