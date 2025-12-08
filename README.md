@@ -23,11 +23,42 @@ This will is the first part of a larger project.
 16. Custom made SVGs for Icons in the Escape Room.
 17. Allows Multiple Different Question Type (Multiple Choice, Code Correction, and Info/Guide hotspots).
 18. Escape Room Page CRUD Backend and Local SQLite database and Prisma ORM.
+19. Skeletal Cards for Placeholder during Escape Room Database Retrieval Loading Duration.
+20. Search and Sort for Escape Rooms.
+21. Seeding for Singular/Bulk Escape Rooms.
 
 ## How to Run Locally
 
-1. Clone the repository.
-2. Install dependencies with `npm install`.
-3.  Initialize the Database with `npx prisma db push`.
-4. Run the development server with `npm run dev`.
-5. Check the page result at http://localhost:3000.
+1. **Clone the repository:**
+```bash
+git clone https://github.com/Bryan04107/Cloud-Based-Web-Application/
+```
+2. **Install dependencies:**
+```bash
+npm install
+```
+3. **Initialize the Database:**
+*Creates the local SQLite file from the Prisma schema.*
+```bash
+npx prisma db push
+```
+4. **Seed the Database (Optional):**
+*You can populate the database with simulated escape room using these commands:*
+Seed a fixed sample escape room:
+```bash
+npm run seed:set
+```
+Seed 10 random escape rooms:
+```bash
+npm run seed:random
+```
+Seed a specified number (above 1) of random escape rooms (e.g. 50):
+```bash
+npm run seed:random -- 50
+```
+5. **Run the development server:**
+```bash
+npm run dev
+```
+6. **Check the page result:**
+Navigate to [http://localhost:3000](http://localhost:3000)

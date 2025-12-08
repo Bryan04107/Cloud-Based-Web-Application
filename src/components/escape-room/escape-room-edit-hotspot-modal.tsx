@@ -44,7 +44,7 @@ export default function EscapeRoomEditHotspotModal({
       if (hotspotToEdit) {
         setFormData(hotspotToEdit);
       } else {
-        setFormData({ ...initialData, id: Date.now().toString() });
+        setFormData({ ...initialData, id: crypto.randomUUID() });
       }
     }
   }, [isOpen, hotspotToEdit]);

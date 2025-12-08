@@ -11,7 +11,7 @@ export async function GET() {
       hotspots: JSON.parse(room.hotspots),
     }));
     return NextResponse.json(parsedRooms);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to fetch rooms' }, { status: 500 });
   }
 }
@@ -19,7 +19,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { id, hotspots, ...rest } = body;
+    const { hotspots, ...rest } = body;
     const newRoom = await prisma.escapeRoom.create({
       data: {
         ...rest,
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       ...newRoom,
       hotspots: JSON.parse(newRoom.hotspots)
     });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to create room' }, { status: 500 });
   }
 }
