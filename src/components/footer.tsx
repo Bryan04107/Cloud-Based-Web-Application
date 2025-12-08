@@ -6,7 +6,8 @@ export default function Footer() {
   return (
     <footer className="w-full text-center p-4 bg-footer">
       <p className="space-x-1">
-        Copyright © 2025 - {studentName} - {studentNumber} - {currentDate}
+        <span>Copyright © 2025 - {studentName} - {studentNumber}</span>
+        <span className="hidden sm:inline"> - {currentDate}</span>
       </p>
      </footer>
   );

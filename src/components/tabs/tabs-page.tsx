@@ -81,7 +81,7 @@ export default function TabsPage() {
   };
 
   return (
-    <div className="flex flex-grow md:flex-row flex-col h-[calc(100vh-106.74px-55.99px-40px)] justify-between items-start md:space-y-0 space-y-4 md:space-x-4 space-x-0">
+    <div className="flex flex-grow md:flex-row flex-col h-[calc(100vh-113.47px-55.99px-31.99px)] justify-between items-start md:space-y-0 space-y-4 md:space-x-4 space-x-0">
       <TabsHeader
         tabs={tabs}
         activeTab={activeTab}

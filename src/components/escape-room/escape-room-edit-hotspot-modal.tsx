@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import type { Hotspot, HotspotType } from '@/lib/types';
+import { toast } from 'sonner';
 
 interface EscapeRoomEditHotspotModalProps {
   isOpen: boolean;
@@ -43,7 +44,7 @@ export default function EscapeRoomEditHotspotModal({
       if (hotspotToEdit) {
         setFormData(hotspotToEdit);
       } else {
-        setFormData({ ...initialData, id: Date.now().toString() });
+        setFormData({ ...initialData, id: crypto.randomUUID() });
       }
     }
   }, [isOpen, hotspotToEdit]);
@@ -142,6 +143,7 @@ export default function EscapeRoomEditHotspotModal({
       } catch { setErrorMsg("Error: Invalid solution format."); return; }
     }
     onSave(formData);
+    toast.success(hotspotToEdit ? 'Puzzle succesfully updated!' : 'Puzzle succesfully created!');
   };
 
   if (!isOpen) return null;
@@ -154,7 +156,7 @@ export default function EscapeRoomEditHotspotModal({
       <style>{`@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }`}</style>  
       <div className="bg-background border-2 border-primary rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 text-primary flex flex-col animate-fade-in-scale-up">
         <h2 className="text-2xl font-bold mb-4">{hotspotToEdit ? 'Edit Hotspot' : 'Add New Hotspot'}</h2>
-        <div className="grid grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           
           <div className="space-y-4">
             <div>
