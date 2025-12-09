@@ -8,26 +8,26 @@ A web application that creates HTML + JS to deploy on MOODLE LMS for the CSE3CWA
 - **Styling:** Tailwind CSS
 - **Deployment:** Docker (Containerized)
 - **Languages:** TypeScript
-* **Serverless Functions (Lambda):** Utilizes Next.js API Routes (`/api/`) for dynamic HTML generation and backend logic which is architecturally equivalent to AWS Lambda functions.
-* **Instrumentation:** Implemented via `src/instrumentation.ts` hook for server lifecycle monitoring.
+- **Serverless Functions (Lambda):** Utilizes Next.js API Routes (`/api/`) for dynamic HTML generation and backend logic which is architecturally equivalent to AWS Lambda functions.
+- **Instrumentation:** Implemented via `src/instrumentation.ts` hook for server lifecycle monitoring.
 
 
 ## Current Features Implemented
 
 ### **Core UI/UX**
-1.  **Responsive Design:** Functional Navigation Bar, Header, Footer, and Hamburger Menu.
-2.  **Theming:** 6 selectable themes (including a system theme detection).
-3.  **State Persistence:** Cookies used for Navigated Tabs, User Themes, and Tab Content.
-4.  **Feedback:** Custom Skeletal Placeholder Cards, Loading screens, and 404 Not Found pages.
+1. **Responsive Design:** Functional Navigation Bar, Header, Footer, and Hamburger Menu.
+2. **Theming:** 6 selectable themes (including a system theme detection).
+3. **State Persistence:** Cookies used for Navigated Tabs, User Themes, and Tab Content.
+4. **Feedback:** Custom Skeletal Placeholder Cards, Loading screens, and 404 Not Found pages.
 
 ### **Tabs Page**
-1.  **Dynamic Content:** Up to 15 Tabs Header, each with customizable names and content.
-2.  **Output:** Generates a standalone HTML file containing the tabs name and content.
-3.  **Guide:** Walkthrough Video attached to the About Page.
+1. **Dynamic Content:** Up to 15 Tabs Header, each with customizable names and content.
+2. **Output:** Generates a standalone HTML file containing the tabs name and content.
+3. **Guide:** Walkthrough Video attached to the About Page.
 
 ### **Escape Room Builder (Advanced)**
-1.  **CRUD Operations:** Create, Read, Update, and Delete escape rooms using a local SQLite database and Prisma ORM..
-2.  **Visual Editor:** Drag-and-drop hotspots on background images.
+1. **CRUD Operations:** Create, Read, Update, and Delete escape rooms using a local SQLite database and Prisma ORM.
+2. **Visual Editor:** Drag-and-drop hotspots on background images.
 3. **Question Types:** Supports Single/Multiple Choice Questions, Essay/Code Questions, and Guide hotspots.
 4. **Custom Assets:** Custom-made SVGs for Game Icons (Lock, SCQ and MCQ, Code, Guide.).
 5. **Game Logic:** Functional Timer, Penalty system, Win/Loss states, and Hotspots states (Locked/Hidden).

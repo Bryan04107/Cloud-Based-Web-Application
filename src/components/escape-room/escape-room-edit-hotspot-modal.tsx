@@ -13,6 +13,14 @@ interface EscapeRoomEditHotspotModalProps {
   existingHotspots: Hotspot[];
 }
 
+function generateId() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 const initialData: Hotspot = {
   id: "",
   name: "New Puzzle",
@@ -44,7 +52,7 @@ export default function EscapeRoomEditHotspotModal({
       if (hotspotToEdit) {
         setFormData(hotspotToEdit);
       } else {
-        setFormData({ ...initialData, id: crypto.randomUUID() });
+        setFormData({ ...initialData, id: generateId() });
       }
     }
   }, [isOpen, hotspotToEdit]);

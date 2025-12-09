@@ -1,13 +1,20 @@
 import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 import path from 'path'
-import { randomUUID } from 'crypto'
 
 const prisma = new PrismaClient()
 
 const adjectives = ["Haunted", "Neglected", "Lost", "Forgotten", "Broken", "Secure", "Rundown"]
 const nouns = ["Room", "Base", "Hall", "Office", "Zone", "Bunker", "Vault"]
 const puzzleTypes = ["guide", "code", "mcq_single", "mcq_multi"]
+
+function generateId() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 
 function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -77,7 +84,7 @@ async function main() {
       }
 
       hotspots.push({
-        id: randomUUID(),
+        id: generateId(),
         name: `${type.toUpperCase()} Puzzle ${j + 1}`,
         x: getRandomInt(5, 95),
         y: getRandomInt(5, 95),

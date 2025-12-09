@@ -1,9 +1,16 @@
 import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 import path from 'path'
-import { randomUUID } from 'crypto'
 
 const prisma = new PrismaClient()
+
+function generateId() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 
 function getBase64Image(filename: string) {
   try {
@@ -17,13 +24,13 @@ function getBase64Image(filename: string) {
 
 async function main() {
   console.log(`🎲 Generating Set Room\n`)
-  const id1 = randomUUID();
-  const id2 = randomUUID();
-  const id3 = randomUUID();
+  const id1 = generateId();
+  const id2 = generateId();
+  const id3 = generateId();
 
   const setHotspots = [
     {
-      id: randomUUID(),
+      id: generateId(),
       name: "Guide Introduction",
       x: 50, y: 50,
       type: "guide",
@@ -51,7 +58,7 @@ async function main() {
       }
     },
     {
-      id: randomUUID(),
+      id: generateId(),
       name: "SCQ2 OOP",
       x: 15, y: 15,
       type: "mcq_single",
@@ -80,7 +87,7 @@ async function main() {
       }
     },
     {
-      id: randomUUID(),
+      id: generateId(),
       name: "MCQ2 Loops",
       x: 85, y: 15,
       type: "mcq_multi",
@@ -109,7 +116,7 @@ async function main() {
       }
     },
     {
-      id: randomUUID(),
+      id: generateId(),
       name: "Code Array Index",
       x: 50, y: 85,
       type: "code",
@@ -124,7 +131,7 @@ async function main() {
       }
     },    
     {
-      id: randomUUID(),
+      id: generateId(),
       name: "Code Array Append",
       x: 50, y: 25,
       type: "code",
@@ -142,7 +149,7 @@ async function main() {
 
   const setRoom = await prisma.escapeRoom.create({
     data: {
-      id: randomUUID(),
+      id: generateId(),
       title: "Sample Escape Room",
       timerMinutes: 3,
       penaltySeconds: 45,
