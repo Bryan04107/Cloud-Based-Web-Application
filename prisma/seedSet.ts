@@ -125,7 +125,7 @@ async function main() {
     },    
     {
       id: randomUUID(),
-      name: "Code Array Index",
+      name: "Code Array Append",
       x: 50, y: 25,
       type: "code",
       isBonus: false,
