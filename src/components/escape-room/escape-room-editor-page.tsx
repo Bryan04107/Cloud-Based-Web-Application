@@ -9,6 +9,7 @@ import { generateEscapeRoomHtml } from '@/lib/generate-escape-room';
 import BuilderPanel from '@/components/escape-room/escape-room-builder-panel';
 import GamePanel from '@/components/escape-room/escape-room-game-panel';
 import { toast } from 'sonner';
+import { randomUUID } from 'crypto';
 
 interface EditorPageProps {
   initialConfig?: EscapeRoomConfig;
@@ -22,7 +23,7 @@ export default function EscapeRoomEditorPage({
   onBack
 }: EditorPageProps) {
   const [config, setConfig] = useState<EscapeRoomConfig>(() => initialConfig || {
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     title: "New Room",
     timerMinutes: 5,
     penaltySeconds:30,
@@ -187,7 +188,7 @@ export default function EscapeRoomEditorPage({
       const y = ((e.clientY - rect.top) / rect.height) * 100;
 
       setEditingHotspot({
-        id: crypto.randomUUID(),
+        id: randomUUID(),
         name: "New Puzzle",
         x: Math.round(x),
         y: Math.round(y),

@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 import path from 'path'
+import { randomUUID } from 'crypto'
 
 const prisma = new PrismaClient()
 
@@ -16,13 +17,13 @@ function getBase64Image(filename: string) {
 
 async function main() {
   console.log(`🎲 Generating Set Room\n`)
-  const id1 = crypto.randomUUID();
-  const id2 = crypto.randomUUID();
-  const id3 = crypto.randomUUID();
+  const id1 = randomUUID();
+  const id2 = randomUUID();
+  const id3 = randomUUID();
 
   const setHotspots = [
     {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       name: "Guide Introduction",
       x: 50, y: 50,
       type: "guide",
@@ -50,7 +51,7 @@ async function main() {
       }
     },
     {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       name: "SCQ2 OOP",
       x: 15, y: 15,
       type: "mcq_single",
@@ -79,7 +80,7 @@ async function main() {
       }
     },
     {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       name: "MCQ2 Loops",
       x: 85, y: 15,
       type: "mcq_multi",
@@ -102,13 +103,13 @@ async function main() {
       points: 40,
       lockBehavior: "visible_locked",
       content: {
-        question: "This javascript line is supposed to save \"jane\" into a variable.\nFix this syntax using camelcase variable name:\n\n`let user name = 'Jane';`",
+        question: "This javascript line is supposed to save \"Jane\" into a variable.\nFix this syntax using camelcase variable name:\n\n`let user name = 'Jane';`",
         solution: "let userName = 'Jane';",
         options: [] 
       }
     },
     {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       name: "Code Array Index",
       x: 50, y: 85,
       type: "code",
@@ -123,13 +124,14 @@ async function main() {
       }
     },    
     {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       name: "Code Array Index",
       x: 50, y: 25,
       type: "code",
       isBonus: false,
       points: 50,
-      lockBehavior: "visible_locked",
+      lockedBy: id3,
+      lockBehavior: "hidden",
       content: {
         question: "Javascript have a different syntax for appending items to an array.\nBelow is a python method to append items to an array:\n\n`items.append('Sword');`\n\nChange this python method into javascript",
         solution: "items.push('Sword');",
@@ -140,11 +142,11 @@ async function main() {
 
   const setRoom = await prisma.escapeRoom.create({
     data: {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       title: "Sample Escape Room",
       timerMinutes: 3,
       penaltySeconds: 45,
-      backgroundImage: getBase64Image("tempRoom1.jpeg"),
+      backgroundImage: getBase64Image("tempRoom4.jpg"),
       hotspots: JSON.stringify(setHotspots),
     },
   })

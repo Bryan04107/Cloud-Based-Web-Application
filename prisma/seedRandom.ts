@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 import path from 'path'
+import { randomUUID } from 'crypto'
 
 const prisma = new PrismaClient()
 
@@ -76,7 +77,7 @@ async function main() {
       }
 
       hotspots.push({
-        id: crypto.randomUUID(),
+        id: randomUUID(),
         name: `${type.toUpperCase()} Puzzle ${j + 1}`,
         x: getRandomInt(5, 95),
         y: getRandomInt(5, 95),
