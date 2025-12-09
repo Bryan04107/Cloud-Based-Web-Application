@@ -11,6 +11,9 @@
     "seed:random": "npx tsx prisma/seedRandom.ts",
     "db:wipe": "npx prisma db push --force-reset"
   },
+  "prisma": {
+  "seed": "ts-node prisma/seedSet.ts"
+  },
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "lucide-react": "^0.556.0",
