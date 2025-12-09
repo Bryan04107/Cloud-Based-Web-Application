@@ -75,19 +75,13 @@ docker exec -it <CONTAINER_ID> npm run seed:random --50
 
 ## How to Run Locally
 
-1. **Clone the repository:**
+1. **Install dependencies:**
 ```bash
-git clone [https://github.com/Bryan04107/Cloud-Based-Web-Application/](https://github.com/Bryan04107/Cloud-Based-Web-Application/)
+npx playwright install
 ```
 
 
-2. **Install dependencies:**
-```bash
-npm install
-```
-
-
-3. **Initialize the Database:**  
+2. **Execute the Tests:**  
 *Creates the local SQLite file from the Prisma schema.*
 ```bash
 npx prisma db push
@@ -118,3 +112,19 @@ npm run dev
 
 6. **Check the page result:**  
 Navigate to [http://localhost:3000](http://localhost:3000)
+
+
+## How to Run Playwright Tests
+*Ensure the server is running before starting the test.*
+
+1. **Install dependencies:**
+```bash
+npx playwright install
+```
+
+
+2. **Execute the Tests:**  
+*Tests to verify room creation (title and image upload), game elements (hotspots, timer, and score), and state transitions.*
+```bash
+npx playwright test
+```
