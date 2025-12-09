@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import type { Hotspot, HotspotType } from '@/lib/types';
 import { toast } from 'sonner';
+import { randomUUID } from 'crypto';
 
 interface EscapeRoomEditHotspotModalProps {
   isOpen: boolean;
@@ -44,7 +45,7 @@ export default function EscapeRoomEditHotspotModal({
       if (hotspotToEdit) {
         setFormData(hotspotToEdit);
       } else {
-        setFormData({ ...initialData, id: crypto.randomUUID() });
+        setFormData({ ...initialData, id: randomUUID() });
       }
     }
   }, [isOpen, hotspotToEdit]);
