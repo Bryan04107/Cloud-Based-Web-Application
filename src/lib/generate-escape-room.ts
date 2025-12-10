@@ -62,7 +62,7 @@ export function generateEscapeRoomHtml(config: EscapeRoomConfig): string {
     .hotspot.solved { background: var(--success); border-color: #86efac; color: white; opacity: 0.6; }
     .hotspot.solved.guide { opacity: 1; }
     
-    #hud { position: absolute; top: 1rem; right: 1rem; display: flex; gap: 1rem; z-index: 30; pointer-events: none; opacity: 0; transition: opacity 0.5s; }
+    #hud { position: absolute; top: 1rem; right: 1rem; display: flex; gap: 1rem; z-index: 60; pointer-events: none; opacity: 0; transition: opacity 0.5s; }
     .hud-box { 
       background: var(--panel-bg); 
       backdrop-filter: blur(12px); 

@@ -12,7 +12,7 @@
     "db:wipe": "npx prisma db push --force-reset"
   },
   "prisma": {
-  "seed": "ts-node prisma/seedSet.ts"
+  "seed": "npx tsx prisma/seedSet.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
